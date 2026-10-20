@@ -1,0 +1,42 @@
+N=60, 200 trials, seed 42
+layout     C  design                                      T(min)   E(Wh)  missed
+uniform   15  A oracle overhead cam, robot-only            11.13    2.26    0.00
+uniform   15  A oracle overhead cam, +20 W laptop          11.13    5.97    0.00
+uniform   15  B on-board R=5 m r=0.95                      18.30    3.87    0.00
+uniform   15  B on-board R=3 m r=0.95                      22.34    4.81    0.00
+uniform   15  B on-board R=3 m r=0.8                       29.40    6.41    0.01
+uniform   15  B on-board R=2 m r=0.7                       44.25    9.85    0.06
+uniform   15  C blind sweep w=0.3 m                        64.49   17.98    0.00
+uniform   15  C blind sweep w=0.6 m                        36.44   10.04    0.00
+uniform   15  C blind sweep w=1.0 m                        24.98    6.79    0.00
+uniform   15  S4 box sweep w=0.3 m (needs detection)       60.13   16.75    0.00
+uniform   30  A oracle overhead cam, robot-only             8.32    1.71    0.00
+uniform   30  A oracle overhead cam, +20 W laptop           8.32    4.49    0.00
+uniform   30  B on-board R=5 m r=0.95                      15.61    3.35    0.00
+uniform   30  B on-board R=3 m r=0.95                      19.65    4.30    0.00
+uniform   30  B on-board R=3 m r=0.8                       27.06    5.96    0.01
+uniform   30  B on-board R=2 m r=0.7                       42.18    9.45    0.06
+uniform   30  C blind sweep w=0.3 m                        61.61   17.31    0.00
+uniform   30  C blind sweep w=0.6 m                        33.63    9.38    0.00
+uniform   30  C blind sweep w=1.0 m                        22.07    6.11    0.00
+uniform   30  S4 box sweep w=0.3 m (needs detection)       57.28   16.08    0.00
+drill     15  A oracle overhead cam, robot-only            11.56    2.36    0.00
+drill     15  A oracle overhead cam, +20 W laptop          11.56    6.21    0.00
+drill     15  B on-board R=5 m r=0.95                      19.33    4.11    0.00
+drill     15  B on-board R=3 m r=0.95                      23.38    5.06    0.00
+drill     15  B on-board R=3 m r=0.8                       30.88    6.76    0.01
+drill     15  B on-board R=2 m r=0.7                       45.62   10.17    0.06
+drill     15  C blind sweep w=0.3 m                        67.20   18.75    0.00
+drill     15  C blind sweep w=0.6 m                        39.25   10.83    0.00
+drill     15  C blind sweep w=1.0 m                        27.47    7.49    0.00
+drill     15  S4 box sweep w=0.3 m (needs detection)       19.88    5.34    0.00
+drill     30  A oracle overhead cam, robot-only             7.31    1.48    0.00
+drill     30  A oracle overhead cam, +20 W laptop           7.31    3.92    0.00
+drill     30  B on-board R=5 m r=0.95                      15.09    3.23    0.00
+drill     30  B on-board R=3 m r=0.95                      19.13    4.18    0.00
+drill     30  B on-board R=3 m r=0.8                       27.06    5.97    0.01
+drill     30  B on-board R=2 m r=0.7                       42.75    9.58    0.06
+drill     30  C blind sweep w=0.3 m                        62.92   17.68    0.00
+drill     30  C blind sweep w=0.6 m                        34.97    9.76    0.00
+drill     30  C blind sweep w=1.0 m                        23.20    6.43    0.00
+drill     30  S4 box sweep w=0.3 m (needs detection)       15.61    4.28    0.00
