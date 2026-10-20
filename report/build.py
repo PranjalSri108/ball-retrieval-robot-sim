@@ -285,8 +285,8 @@ S0 = f'''<div class="cover">
 <p class="inst">BITS Pilani – Introduction to Sports Engineering<br>(Take-Home Assignment #2)</p>
 <p>Semester: <b>I</b> &nbsp;&nbsp; Year: <b>2026-27</b></p>
 <table class="kv">
-<tr><td>Student Name(s)</td><td><span class="ph">[Student 1 name]</span>, <span class="ph">[Student 2 name]</span></td></tr>
-<tr><td>ID No(s)</td><td><span class="ph">[20XXXXXXXXXX]</span>, <span class="ph">[20XXXXXXXXXX]</span></td></tr>
+<tr><td>Student Name</td><td>Pranjal Srivastav</td></tr>
+<tr><td>ID No.</td><td>2023B1A40858P</td></tr>
 <tr><td>Title of Project</td><td><b>Autonomous Ball-Retrieval Robot for Sports Training and Major Events: a simulation-based comparison of detection, path-planning and pickup designs</b> (Project Idea 11)</td></tr>
 <tr><td>Targeted focus</td><td>{cover_focus}</td></tr>
 <tr><td>Primary sport</td><td>Tennis (table tennis and golf discussed as variants)</td></tr>
@@ -306,7 +306,7 @@ S1 = f'''<h3>Motivation and real-world relevance</h3>
 <p class="ref">[2] {REFS['toyota']}</p>'''
 
 S2 = f'''<h3>2.1 Core idea</h3>
-<p>The robot is a small differential-drive vehicle with a <b>front roller intake</b> that pins each ball against a curved ramp and lifts it into a hopper (Fig. 1). Driven-roller ("throwing") intakes were rated the most efficient option for tennis in a comparative study, compared with rotary shafts, conveyors and grippers {c('sari')}. Rather than proposing one design, we compare <b>three system architectures</b> that differ in how the robot knows where the balls are:</p>
+<p>The robot is a small differential-drive vehicle with a <b>front roller intake</b> that pins each ball against a curved ramp and lifts it into a hopper (Fig. 1). Driven-roller ("throwing") intakes were rated the most efficient option for tennis in a comparative study, compared with rotary shafts, conveyors and grippers {c('sari')}. Rather than proposing one design, I compare <b>three system architectures</b> that differ in how the robot knows where the balls are:</p>
 <table class="t"><tr><th>Design</th><th>How balls are found</th><th>How they are collected</th><th>Literature precedent</th></tr>
 <tr><td><b>A</b> Overhead camera</td><td>Fixed camera above the court sees all balls; ball and robot positions sent to robot</td><td>Shortest tour: nearest-neighbour (NN) + 2-opt</td><td>Overhead camera + NN tour {c('sari')}</td></tr>
 <tr><td><b>B</b> On-board camera</td><td>Camera on the robot; survey lanes until area seen; detection range R, recall r</td><td>Survey, then NN + 2-opt tour of detected balls</td><td>Pi + OpenCV / CNN robots {c('gu')}</td></tr>
@@ -320,13 +320,13 @@ S2 = f'''<h3>2.1 Core idea</h3>
 <ul>
 <li><b>Detection.</b> Baseline: HSV colour threshold + Hough circle transform (OpenCV). Thresholds such as H 20–40 have been published for yellow balls, but S/V ranges drift with lighting and must be tuned on site {c('cao')}. On a Raspberry Pi without GPU, the Hough transform gave the best speed/accuracy balance in a simple scene {c('keca')}. AI option: a nano-size YOLO model; published inference benchmarks (COCO, not ball-specific) are ≈3 FPS on a Pi 4 and ≈20 FPS on a Pi 5 for YOLOv8n {c('qeng')}. Golf-ball CNNs reach 84–96 % mAP@0.5 on a desktop GPU {c('zhang')}.</li>
 <li><b>Localisation.</b> Pixel → court coordinates by a homography (perspective transform) using the court lines; robot pose from wheel encoders + IMU (EKF), or directly from the overhead camera in design A.</li>
-<li><b>Route planning.</b> Pickup order as a travelling-salesman problem: NN heuristic improved by 2-opt; when the hopper (capacity C) is smaller than the number of balls, the problem becomes a capacitated vehicle-routing problem, solvable with Google OR-Tools {c('ortools')}. Our simulator uses NN + 2-opt split by capacity.</li>
+<li><b>Route planning.</b> Pickup order as a travelling-salesman problem: NN heuristic improved by 2-opt; when the hopper (capacity C) is smaller than the number of balls, the problem becomes a capacitated vehicle-routing problem, solvable with Google OR-Tools {c('ortools')}. The simulator uses NN + 2-opt split by capacity.</li>
 <li><b>Control and safety.</b> PID heading/speed control; ultrasonic/ToF sensors trigger stop-and-replan when a person or obstacle is within a safety distance.</li></ul>
 <h3>2.4 Tools, software and materials</h3>
 <p><b>Software:</b> Python 3 (pure-Python simulator written for this project, no external libraries), OpenCV (detection), Google OR-Tools (optional CVRP), Arduino/ESP32 firmware, Chrome/HTML for this report. <b>Hardware (proposed, not yet built):</b> ESP32-CAM or Raspberry Pi + camera, TB6612FNG driver, 2 × N20 12 V geared motors with encoders, 25GA-370 roller motor, 3S 11.1 V 2200 mAh Li-ion pack, HC-SR04 + VL53L0X sensors, acrylic chassis, 3D-printed/plywood ramp and hopper (CAD: Fusion 360/Onshape).</p>
 <p><b>Variants.</b> Table tennis (40 mm, 2.7 g ball) favours suction pickup; one low-cost suction prototype reported ≈60 % (12/20) success, with failures attributed to a servo fault {c('essam')}. Golf ranges already use mature commercial pickers that push passive disc gangs {c('pereira', 'toro')}.</p>'''
 
-S3 = f'''<p>Source type legend: <b>R</b> = official rules, <b>L</b> = peer-reviewed literature, <b>M</b> = manufacturer/retailer data, <b>N</b> = news, <b>E</b> = our own estimate (to be measured).</p>
+S3 = f'''<p>Source type legend: <b>R</b> = official rules, <b>L</b> = peer-reviewed literature, <b>M</b> = manufacturer/retailer data, <b>N</b> = news, <b>E</b> = own estimate (to be measured).</p>
 <table class="t">
 <tr><th>#</th><th>Quantity</th><th>Value used</th><th>Type</th><th>Source / justification</th></tr>
 <tr><td>1</td><td>Tennis ball mass, diameter</td><td>56.0–59.4 g; 6.54–6.86 cm</td><td>R</td><td>ITF Rules, App. I {c('itf')}</td></tr>
@@ -390,17 +390,17 @@ S5 = f'''<h3>5.1 Key findings</h3>
 <tr><td>Chassis kit</td><td>≈ 670–800 {c('robocraze')}</td><td><b>Core total</b></td><td><b>≈ 3,650–4,170</b></td></tr></table>
 <p class="cap">Table 3  Point-in-time Indian retail prices (Oct 2026). Still needed: second MCU, roller driver, buck converter, charger, fabrication (≈ +₹500–1,000, own estimate). A Raspberry Pi 4 4 GB now costs ≈ ₹11,000+ after 2025–26 price rises {c('robocraze', 'rpiprice')}. Commercial tennis robots cost $999–2,275 {c('seeker', 'tennibot')}.</p>
 <h3>5.3 Value for the targeted stakeholders</h3>
-<ul><li><b>Athletes &amp; coaches:</b> more practice time; a low-cost robot (design B) at training academies. The size of the saving is unverified (only a vendor claim exists), so we propose timing real sessions.</li>
+<ul><li><b>Athletes &amp; coaches:</b> more practice time; a low-cost robot (design B) at training academies. The size of the saving is unverified (only a vendor claim exists), so timing real sessions is proposed.</li>
 <li><b>Organisers:</b> clearing practice and warm-up courts between sessions; fewer ball-crew hours in heat. Tennis rules treat ball persons as permanent fixtures only in their recognised positions, and a ball rolling onto court during a point causes a let {c('itf25')}, so robots should <i>not</i> operate during live points.</li>
 <li><b>Sport technologists:</b> an open, reproducible benchmark for comparing detection and planning methods.</li>
 <li><b>Sustainability:</b> &lt; 20 Wh per clearing; battery-electric, no fuel.</li></ul>
 <h3>5.4 What worked, what did not, improvements</h3>
-<p><b>Worked:</b> the simulator separates the effect of detection, intake width and hopper size, and shows clear trade-offs. <b>Did not / limitations:</b> no hardware was built; detection range, recall and power are assumed; design B is a pessimistic model; people, moving balls and wheel slip are ignored. Our first version over-stated the targeted design's advantage (≈9×) because it assumed perfect detection, a 90-ball hopper and a narrow sweeper — an independent review caught this and the model was extended. <b>Improvements:</b> measure R, r and current draw on a real court; add detection while touring; model false detections; validate against a timed hardware run.</p>
+<p><b>Worked:</b> the simulator separates the effect of detection, intake width and hopper size, and shows clear trade-offs. <b>Did not / limitations:</b> no hardware was built; detection range, recall and power are assumed; design B is a pessimistic model; people, moving balls and wheel slip are ignored. The first version over-stated the targeted design's advantage (≈9×) because it assumed perfect detection, a 90-ball hopper and a narrow sweeper — an independent review caught this and the model was extended. <b>Improvements:</b> measure R, r and current draw on a real court; add detection while touring; model false detections; validate against a timed hardware run.</p>
 <h3>5.5 Large-event deployment (Ahmedabad 2030 / India 2036)</h3>
 <p>India's bid timeline foresees an IOC shortlist in March 2027 and host election in mid-2029 {c('indiatoday')}; Ahmedabad hosts the 2030 Commonwealth Games where table tennis is a core sport {c('cwg')}, and the planned SVP Sports Enclave includes a tennis centre with a 10,000-seat centre court plus outdoor courts {c('dezeen')}. Ahmedabad reached 46.6 °C in May 2024 {c('heat')}, so battery thermal design is critical. Tokyo 2020's robots needed heat and water testing, quieter motors and turf-friendly tyres, and were not used where humans were faster {c('toyota')}. Recommended role: a <b>fleet of design-A/B robots on practice courts</b>, operating between sessions, compliant with service-robot safety requirements {c('iso')}.</p>'''
 
 S6 = f'''<h3>Reflection</h3>
-<p class="mot">We learned that "autonomous" is not one decision but a chain: how well the robot sees, how it orders its route, and how wide and large its intake and hopper are. Our first model looked impressive (9× faster than sweeping) but rested on hidden ideal assumptions; extending it showed the advantage depends on detection quality. Writing assumptions in a sourced table, separating manufacturer claims from measurements, and adding automatic code checks made the work honest and reproducible. We also learned that sports rules, heat and safety standards shape a robot's real use as much as engineering does.</p>
+<p class="mot">I learned that "autonomous" is not one decision but a chain: how well the robot sees, how it orders its route, and how wide and large its intake and hopper are. My first model looked impressive (9× faster than sweeping) but rested on hidden ideal assumptions; extending it showed the advantage depends on detection quality. Writing assumptions in a sourced table, separating manufacturer claims from measurements, and adding automatic code checks made the work honest and reproducible. I also learned that sports rules, heat and safety standards shape a robot's real use as much as engineering does.</p>
 <p class="small">(Reflection: ≈95 words.)</p>
 <h3>Future scope and real-world applications</h3>
 <ul>
@@ -453,9 +453,9 @@ def two_opt(depot, order, max_iter=50):     # remove crossing edges
     ...  # reverse segment i..k whenever d(a,c)+d(b,e) &lt; d(a,b)+d(c,e)</pre>
 <p><b>Code link:</b> <a href="https://github.com/PranjalSri108/ball-retrieval-robot-sim">https://github.com/PranjalSri108/ball-retrieval-robot-sim</a> (README gives one-line run commands; outputs reproduce exactly from fixed seeds).</p>
 <h3>8.2 AI / ML component</h3>
-<p>The detection stage is designed for a nano YOLO model (or HSV + Hough baseline). <b>Status: not yet trained.</b> No accuracy figures are claimed in this report. Planned evidence: precision, recall and confusion matrix on ≈100 labelled frames from our own court.</p>
-<h3>8.3 Hardware, demo video, control system</h3>
-<p><b>Status: not built.</b> Prototype funding is available only after evaluation; the bill of materials (Table 3), concept sketch (Fig. 1) and test protocol are ready. Planned test: half-court, N = 10 and 30 balls, uniform and clustered, ≥ 3 trials each; measure time to clear, balls collected, misses, Wh (INA219 current sensor) and detection range; compare with a person using a pick-up tube. Video link: <span class="ph">[to be added if a prototype is built]</span>.</p>
+<p>The detection stage is designed for a nano YOLO model (or HSV + Hough baseline). <b>Status: not yet trained.</b> No accuracy figures are claimed in this report. Planned evidence: precision, recall and confusion matrix on ≈100 labelled frames from my own court.</p>
+<h3>8.3 Hardware and control system</h3>
+<p><b>Status: not built.</b> Prototype funding is available only after evaluation; the bill of materials (Table 3), concept sketch (Fig. 1) and test protocol are ready. Planned test: half-court, N = 10 and 30 balls, uniform and clustered, ≥ 3 trials each; measure time to clear, balls collected, misses, Wh (INA219 current sensor) and detection range; compare with a person using a pick-up tube.</p>
 <h3>References</h3>
 '''
 
@@ -465,7 +465,7 @@ def refs_html():
 CSS = '''
 @page { size: A4; margin: 14mm 15mm 14mm 15mm;
   @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 9px Helvetica, Arial; color: #666; }
-  @bottom-left { content: "Assignment 2 – Project Idea 11 – [ID 1] / [ID 2]"; font: 9px Helvetica, Arial; color: #666; } }
+  @bottom-left { content: "Assignment 2 – Project Idea 11 – Pranjal Srivastav (2023B1A40858P)"; font: 9px Helvetica, Arial; color: #666; } }
 body { font-family: "Times New Roman", Times, serif; font-size: 11pt; line-height: 1.32; color: #111; margin: 0; }
 table.sec { width: 100%; border-collapse: collapse; page-break-before: always; }
 table.sec:first-of-type { page-break-before: auto; }
@@ -514,7 +514,7 @@ def build():
 
 if __name__ == '__main__':
     out = build()
-    pdf = os.path.join(HERE, 'Assignment2_Idea11_ID1_ID2.pdf')
+    pdf = os.path.join(HERE, 'Assignment2_Idea11_2023B1A40858P.pdf')
     chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
     subprocess.run([chrome, '--headless', '--disable-gpu', '--no-pdf-header-footer', f'--print-to-pdf={pdf}', 'file://' + out],
                    check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
