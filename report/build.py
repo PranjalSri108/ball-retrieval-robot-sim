@@ -451,7 +451,7 @@ enclosure 34.73 x 17.07 m = 592.8 m^2; depot at (0, W/2) behind near baseline</p
 def two_opt(depot, order, max_iter=50):     # remove crossing edges
     path = [depot] + order + [depot]
     ...  # reverse segment i..k whenever d(a,c)+d(b,e) &lt; d(a,b)+d(c,e)</pre>
-<p><b>Code link:</b> <span class="ph">[upload the folder <code>experiments/ball-retrieval-sim/</code> to GitHub/Drive and paste the link here]</span></p>
+<p><b>Code link:</b> <a href="https://github.com/PranjalSri108/ball-retrieval-robot-sim">https://github.com/PranjalSri108/ball-retrieval-robot-sim</a> (README gives one-line run commands; outputs reproduce exactly from fixed seeds).</p>
 <h3>8.2 AI / ML component</h3>
 <p>The detection stage is designed for a nano YOLO model (or HSV + Hough baseline). <b>Status: not yet trained.</b> No accuracy figures are claimed in this report. Planned evidence: precision, recall and confusion matrix on ≈100 labelled frames from our own court.</p>
 <h3>8.3 Hardware, demo video, control system</h3>
